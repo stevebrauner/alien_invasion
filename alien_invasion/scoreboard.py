@@ -4,77 +4,63 @@ from ship import Ship
 
 
 class Scoreboard:
-    def __init__(self, game):
-        self.game = game
-        self.screen = game.screen
+    def __init__(self, screen):
+        self.screen = screen
         self.screen_rect = self.screen.get_rect()
-        self.settings = game.settings
-        self.stats = game.stats
-
         self.text_color = (30, 30, 30)
         self.font = pygame.font.SysFont(None, 48)
 
-        self.prep_score()
-        self.prep_high_score()
-        self.prep_level()
-        self.prep_ships()
-
-    def prep_score(self):
-        rounded_score = round(self.stats.score, -1)
+    def prep_score(self, score, background_color):
+        rounded_score = round(score, -1)
         score_as_string = "{:,}".format(rounded_score)
         self.score_image = self.font.render(
             score_as_string,
             True,
             self.text_color,
-            self.settings.background_color,
+            background_color,
         )
 
         self.score_rect = self.score_image.get_rect()
         self.score_rect.right = self.screen_rect.right - 20
         self.score_rect.top = 20
 
-    def prep_high_score(self):
-        high_score = round(self.stats.high_score, -1)
+    def prep_high_score(self, high_score, background_color):
+        high_score = round(high_score, -1)
         high_score_as_string = "{:,}".format(high_score)
         self.high_score_image = self.font.render(
             high_score_as_string,
             True,
             self.text_color,
-            self.settings.background_color,
+            background_color,
         )
 
         self.high_score_rect = self.high_score_image.get_rect()
         self.high_score_rect.centerx = self.screen_rect.centerx
         self.high_score_rect.top = self.score_rect.top
 
-    def prep_level(self):
-        level_as_string = str(self.stats.level)
+    def prep_level(self, level, background_color):
+        level_as_string = str(level)
         self.level_image = self.font.render(
             level_as_string,
             True,
             self.text_color,
-            self.settings.background_color,
+            background_color,
         )
 
         self.level_rect = self.level_image.get_rect()
         self.level_rect.right = self.score_rect.right
         self.level_rect.top = self.score_rect.bottom + 10
 
-    def prep_ships(self):
+    def prep_ships(self, ships_left):
         self.ships = Group()
-        for ship_number in range(self.stats.ships_left):
-            ship = Ship(self.game)
+        for ship_number in range(ships_left):
+            ship = Ship(self.screen)
             ship.rect.x = 10 + ship_number * ship.rect.width
             ship.rect.y = 10
             self.ships.add(ship)
 
-    def show_score(self):
+    def draw(self):
         self.screen.blit(self.score_image, self.score_rect)
         self.screen.blit(self.high_score_image, self.high_score_rect)
         self.screen.blit(self.level_image, self.level_rect)
         self.ships.draw(self.screen)
-
-    def check_high_score(self):
-        if self.stats.score > self.stats.high_score:
-            self.stats.high_score = self.stats.score
-            self.prep_high_score()

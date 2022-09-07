@@ -3,10 +3,9 @@ from pygame.sprite import Sprite
 
 
 class Alien(Sprite):
-    def __init__(self, game):
+    def __init__(self, screen):
         super().__init__()
-        self.screen = game.screen
-        self.settings = game.settings
+        self.screen = screen
 
         self.image = pygame.image.load("images/alien.bmp")
         self.rect = self.image.get_rect()
@@ -20,9 +19,8 @@ class Alien(Sprite):
         screen_rect = self.screen.get_rect()
         if self.rect.right >= screen_rect.right or self.rect.left <= 0:
             return True
+        return False
 
-    def update(self):
-        speed = self.settings.alien_speed
-        direction = self.settings.fleet_direction
+    def update(self, speed, direction):
         self.position_x += speed * direction
         self.rect.x = self.position_x

@@ -2,8 +2,8 @@ import pygame.font
 
 
 class Button:
-    def __init__(self, game, message):
-        self.screen = game.screen
+    def __init__(self, screen, message):
+        self.screen = screen
         self.screen_rect = self.screen.get_rect()
 
         self.width, self.height = 200, 50

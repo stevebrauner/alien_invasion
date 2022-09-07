@@ -3,22 +3,19 @@ from pygame.sprite import Sprite
 
 
 class Bullet(Sprite):
-    def __init__(self, game):
+    def __init__(self, screen, ship_top, color, width, height):
         super().__init__()
-        self.screen = game.screen
-        self.settings = game.settings
+        self.screen = screen
 
-        self.color = self.settings.bullet_color
+        self.color = color
 
-        self.rect = pygame.Rect(
-            0, 0, self.settings.bullet_width, self.settings.bullet_height
-        )
-        self.rect.midtop = game.ship.rect.midtop
+        self.rect = pygame.Rect(0, 0, width, height)
+        self.rect.midtop = ship_top
 
         self.position_y = float(self.rect.y)
 
-    def update(self):
-        self.position_y -= self.settings.bullet_speed
+    def update(self, speed):
+        self.position_y -= speed
         self.rect.y = self.position_y
 
     def draw(self):

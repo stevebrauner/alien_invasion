@@ -3,12 +3,10 @@ from pygame.sprite import Sprite
 
 
 class Ship(Sprite):
-    def __init__(self, game):
+    def __init__(self, screen):
         super().__init__()
-        self.settings = game.settings
-
-        self.screen = game.screen
-        self.screen_rect = game.screen.get_rect()
+        self.screen = screen
+        self.screen_rect = self.screen.get_rect()
 
         self.image = pygame.image.load("images/ship.bmp")
         self.rect = self.image.get_rect()
@@ -19,11 +17,11 @@ class Ship(Sprite):
         self.moving_right = False
         self.moving_left = False
 
-    def update(self):
+    def update(self, speed):
         if self.moving_right and self.rect.right < self.screen_rect.right:
-            self.position_x += self.settings.ship_speed
+            self.position_x += speed
         if self.moving_left and self.rect.left > 0:
-            self.position_x -= self.settings.ship_speed
+            self.position_x -= speed
 
         self.rect.x = self.position_x
 
