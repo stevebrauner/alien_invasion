@@ -5,6 +5,12 @@ import pygame
 
 
 class Controller:
+    """
+    Controller class for the Alien Invasion game.
+
+    This class allows the View and the Model to talk with each other.
+    """
+
     def __init__(self, view, model):
         self.view = view
         self.model = model
@@ -85,6 +91,7 @@ class Controller:
                 self.view.bullets.empty()
                 self.view.create_fleet()
                 self.view.increase_game_speed()
+                self.model.increase_points()
                 self.model.set_level(self.model.get_level() + 1)
                 self.view.prep_level(self.model.get_level())
             self.view.update_aliens()

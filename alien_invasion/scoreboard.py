@@ -4,6 +4,11 @@ from ship import Ship
 
 
 class Scoreboard:
+    """Provides the scoreboard for the Alien Invasion game.
+
+    Used by the View class.
+    """
+
     def __init__(self, screen):
         self.screen = screen
         self.screen_rect = self.screen.get_rect()

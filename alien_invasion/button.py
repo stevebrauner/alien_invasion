@@ -2,6 +2,12 @@ import pygame.font
 
 
 class Button:
+    """
+    The Button class instantiates a button.
+
+    It's used in the View class.
+    """
+
     def __init__(self, screen, message):
         self.screen = screen
         self.screen_rect = self.screen.get_rect()

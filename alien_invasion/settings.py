@@ -1,4 +1,6 @@
 class ViewSettings:
+    """The settings for the View class."""
+
     def __init__(self):
         self.screen_width = 1200
         self.screen_height = 650
@@ -29,6 +31,8 @@ class ViewSettings:
 
 
 class ModelSettings:
+    """The settingd for the Model class."""
+
     def __init__(self):
         self.ship_limit = 3
         self.score_scale = 1.5

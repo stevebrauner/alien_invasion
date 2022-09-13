@@ -3,12 +3,22 @@ from settings import ModelSettings
 
 
 class Model:
+    """
+    The Model for the Alien Invasion game.
+
+    The Model uses the ModelSettings and GameStats classes to hold
+    the data.
+    """
+
     def __init__(self):
         self.settings = ModelSettings()
         self.stats = GameStats(self.settings.ship_limit)
 
     def initialize_dynamic_settings(self):
         self.settings.initialize_dynamic_settings()
+
+    def increase_points(self):
+        self.settings.increase_points()
 
     def set_game_active(self, flag):
         self.stats.game_active = flag

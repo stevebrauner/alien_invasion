@@ -8,6 +8,14 @@ from ship import Ship
 
 
 class View:
+    """
+    The View class for the Alien Invasion game.
+
+    Its settings are located in the ViewSettings class.
+    It uses the Bullet, Alien, Button, and Scoreboard classes to create
+    the elements of the view.
+    """
+
     def __init__(self):
         self.settings = ViewSettings()
 

@@ -1,4 +1,10 @@
 class GameStats:
+    """
+    Provides the game stats for the Alien Invasion game.
+
+    Used by the Model class.
+    """
+
     def __init__(self, ship_limit):
         self.high_score = 0
         self.game_active = False

@@ -3,6 +3,12 @@ from pygame.sprite import Sprite
 
 
 class Ship(Sprite):
+    """
+    The Ship class instantiates a ship.
+
+    It's used by the View and Scoreboard classes.
+    """
+
     def __init__(self, screen):
         super().__init__()
         self.screen = screen

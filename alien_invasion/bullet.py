@@ -3,6 +3,12 @@ from pygame.sprite import Sprite
 
 
 class Bullet(Sprite):
+    """
+    The Bullet class creates a bullet instance.
+
+    It's used by the View class.
+    """
+
     def __init__(self, screen, ship_top, color, width, height):
         super().__init__()
         self.screen = screen

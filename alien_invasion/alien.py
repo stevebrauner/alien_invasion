@@ -3,6 +3,12 @@ from pygame.sprite import Sprite
 
 
 class Alien(Sprite):
+    """
+    Provides the Alien class for the instantiation of an alien.
+
+    Used by the View class.
+    """
+
     def __init__(self, screen):
         super().__init__()
         self.screen = screen
